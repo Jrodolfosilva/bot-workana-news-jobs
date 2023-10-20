@@ -36,6 +36,10 @@ module.exports = {
                 data.unshift(job);
                 fs.writeFileSync(path, JSON.stringify(data, null, 2), 'utf8');
                 console.log(`${job.title}: foi salvo no banco e deve notificar`);
+
+                
+                return true
+                
             } else {
                 console.log(`Já existe no banco: ${job.title}`);
             }
