@@ -30,14 +30,11 @@ module.exports = {
     saveNewJob: (dataNewJob) => {
         const data = readFile();
         dataNewJob.map((job) => {
-            const verify = data.some((item) => item.title === job.title);
-
-            if (!verify) {
+            const verify = data.find((item) => item.title === job.title);
+            if (verify === undefined) {
                 data.unshift(job);
                 fs.writeFileSync(path, JSON.stringify(data, null, 2), 'utf8');
                 console.log(`${job.title}: foi salvo no banco e deve notificar`);
-
-                
                 return true
                 
             } else {
