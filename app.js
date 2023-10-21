@@ -13,9 +13,9 @@ async function connectToWorkana(){
     try{
         const page = await browser.newPage() 
         
-        for(let i =1; i<5;i++){
+        for(let i =1; i<4;i++){
 
-            await page.goto(`https://www.workana.com/jobs?category=it-programming&has_few_bids=1&language=pt&publication=1d&page=${i}`) //navego até a url
+            await page.goto(`https://www.workana.com/jobs?category=it-programming&has_few_bids=1&language=pt&publication=1d&page=${i}`,{timeout:60000}) //navego até a url
             page.waitForSelector('.project-title') // Espero o selector está na DOM
             const dataNewJob = await page.$$eval('.project-title',(dados)=>{
             
@@ -23,11 +23,14 @@ async function connectToWorkana(){
                     const title = job.innerText;
                     const link = job.children[0].href;
                     const datajob =  {title,link} 
+
                     return datajob
                 })
             })
                 
             api.saveNewJob(dataNewJob) 
+          
+            
         }
 
         await browser.close()
