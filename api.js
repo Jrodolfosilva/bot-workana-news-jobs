@@ -31,10 +31,10 @@ module.exports = {
     },
 
     saveNewJob: async(dataNewJob) => {
-        const data = readFile();
+        const data = await readFile();
 
        for (const job of dataNewJob) {
-            const verify = data.find((item) => item.title === job.title);
+            const verify = await data.find((item) => item.title === job.title);
             if (verify === undefined) {
 
                 data.unshift(job)
@@ -53,7 +53,7 @@ module.exports = {
                         },
                         body:JSON.stringify(message)
                     }).then((res)=>res.json()).then((data)=>console.log(data)).catch((eerr)=>console.log(eerr))
-                console.log(`Adicionei no banco ${job}`)
+                console.log(`Adicionei no banco ${job.title}`)
                 
                  
             }else{
