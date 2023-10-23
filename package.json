@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "fs": "^0.0.1-security",
+    "isomorphic-fetch": "^3.0.0",
     "node-cron": "^3.0.2",
+    "node-fetch": "^3.3.2",
     "pm2": "^5.3.0",
     "puppeteer": "^21.3.8"
   },

@@ -1,8 +1,7 @@
-const { promises } = require('dns');
 const fs = require('fs');
 const path = "./jobs.json";
 
-
+let data = readFile()
 
 function readFile() {
     try {
@@ -16,7 +15,7 @@ function readFile() {
 
 module.exports = {
     getData: () => {
-        const data = readFile();
+        
         if (data) {
             return data;
         } else {
@@ -26,12 +25,10 @@ module.exports = {
     },
 
     jobExist: (title) => {
-        const data = readFile();
         return data.some((item) => item.title === title);
     },
 
     saveNewJob: async(dataNewJob) => {
-        const data = await readFile();
 
        for (const job of dataNewJob) {
             const verify = await data.find((item) => item.title === job.title);
