@@ -38,7 +38,7 @@ module.exports = {
                 data.unshift(job)
                 fs.writeFileSync(path, JSON.stringify(data, null, 2), 'utf8');
 
-                const url = `http://18.230.140.98:3333/message/text?key=${key}`
+                const url = `${key}`
                 const message ={
                     id:"558198857479",
                     message: `🧙${job.title} : ${job.link}`
