@@ -1,5 +1,13 @@
-node_modules
+# Arquivo .env
+.env
 
-jobs.json
-node_modules
-env
+# Pasta node_modules
+node_modules/
+
+# Arquivos gerados automaticamente
+package-lock.json
+yarn.lock
+
+# Arquivos de log
+logs/
+*.log
