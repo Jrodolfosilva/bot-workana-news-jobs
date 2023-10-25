@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 const api = require('./api');
 const cron = require('node-cron');
+const randomUseragent = require('random-useragent');
 
 
 
@@ -9,12 +10,14 @@ const cron = require('node-cron');
 async function connectToWorkana() {
   const  browser = await puppeteer.launch({
         headless: 'new',
-        defaultViewport: null
+        defaultViewport: null,
+        
     });
 
     try {       
         for (let i = 1; i < 4; i++) {
             const page = await browser.newPage();
+            await page.setUserAgent(randomUseragent.getRandom())
             await page.goto(`https://www.workana.com/jobs?category=it-programming&has_few_bids=1&language=pt&publication=1d&page=${i}`,{timeout:60000});
             await page.waitForSelector('.project-title');
             const dataNewJob = await page.$$eval('.project-title', (dados) => {
