@@ -20,7 +20,7 @@ function updateJobsdB(){
         var dataPostagem = new Date(data[i].postDate);
         var diferencaEmDias = (date - dataPostagem) / (1000 * 60 * 60 * 24);
       
-        if (diferencaEmDias >= 2) {
+        if (diferencaEmDias >= 1) {
             console.log(`Removido do banco:${data[i].title}`)
             data.splice(i, 1); 
             fs.writeFileSync(path, JSON.stringify(data, null, 2), 'utf8');
@@ -31,4 +31,5 @@ function updateJobsdB(){
     
 
 }cron.schedule('0 0 */2 * * *',updateJobsdB)
+updateJobsdB()
 

@@ -38,7 +38,11 @@ async function connectToWorkana() {
       await browser.close()
     } catch (error) {
         console.error('Erro:', error);
-    }
+    }finally {
+        const pages = await browser.pages();
+    
+        for(const page of pages) await page.close();
+      }
 }
 
 connectToWorkana();
