@@ -24,8 +24,7 @@ async function connectToWorkana() {
                     return dados.map((job) => {
                         const title = job.innerText;
                         const link = job.children[0].href;
-                        const postDate =  new Date().toISOString()
-                       ; 
+                        const postDate = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
 
                         return { title, link,postDate };
                     });
