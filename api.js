@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = "./jobs.json";
 require('dotenv').config();
-const key = process.env.WAInstance
+
+
+
 let data = readFile()
 
 function readFile() {
@@ -37,17 +39,17 @@ module.exports = {
 
                 data.unshift(job)
                 fs.writeFileSync(path, JSON.stringify(data, null, 2), 'utf8');
-
-                const url = `${key}`
+ 
+                const url = 'https://node-s-node.dbxyl0.easypanel.host/message/text?key=123'
                 const message ={
-                    id:"558198857479",
+                    id:"558187702501",
                     message: `🧙${job.title} : ${job.link}`
                 }
                
-                    await fetch(url,{
+                   await fetch(url,{
                         method: 'POST',
                         headers:{
-                            "Content-Type":"application/json; charset=utf-8"
+                            "Content-Type":"application/json"
                         },
                         body:JSON.stringify(message)
                     }).then((res)=>res.json()).then((data)=>console.log(data)).catch((eerr)=>console.log(eerr))
